@@ -1,5 +1,9 @@
 package ie.atu.sem2_week9_lab6.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -9,12 +13,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@Entity
 public class Booking {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @NotBlank(message = "Booking ID is required.")
-    private String bookingId;
 
     @NotBlank(message = "Booking Tag is required.")
     private String bookingTag;
@@ -54,14 +58,6 @@ public class Booking {
 
     public void setBookingTag(String bookingTag) {
         this.bookingTag = bookingTag;
-    }
-
-    public void setBookingId(String bookingId) {
-        this.bookingId = bookingId;
-    }
-
-    public String getBookingId() {
-        return bookingId;
     }
 
     public String getBookingTag() {
